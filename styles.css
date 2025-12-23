@@ -25,7 +25,6 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-dark);
 }
-/* Градиент для текста (ИИ) */
 .gradient-text {
     background: linear-gradient(to right, #4f46e5, #a855f7);
     background-clip: text;
@@ -35,7 +34,6 @@ body {
     font-weight: 800;
 }
 
-/* Исправление блока картинки на главной */
 .hero-image-block {
     flex: 1;
     display: flex;
@@ -44,7 +42,6 @@ body {
     min-width: 300px;
 }
 
-/* Дополнительный отступ для мобильных устройств */
 @media (max-width: 768px) {
     .hero-section {
         padding-top: 7rem;
@@ -54,14 +51,13 @@ body {
         font-size: 2.2rem;
     }
 }
-/* 2. Контейнеры (ОТСТУПЫ ОТ ГРАНИЦ ЭКРАНА) */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem; /* Боковые отступы, чтобы контент не лип к краям */
+    padding: 0 1.5rem;
 }
 
-/* 3. Навигация */
+/*навигация*/
 .navbar {
     position: fixed;
     top: 0; width: 100%; z-index: 100;
@@ -87,7 +83,7 @@ body {
     cursor: pointer;
 }
 
-/* 4. Секция Hero (Главная) */
+/*глав. секция*/
 .hero-section {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -118,10 +114,10 @@ body {
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
 }
 
-/* 5. СЕТКА ДИАГНОСТИКИ (ВАШ ЗАПРОС) */
+/* диагностика */
 .services-container {
     background: white;
-    padding: 3rem 2rem; /* Внутренний отступ самой "коробки" */
+    padding: 3rem 2rem; 
     border-radius: 2.5rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin: 4rem 0;
@@ -135,7 +131,7 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem; /* Расстояние между кнопками выбора */
+    gap: 2rem;
     margin-top: 2rem;
 }
 
@@ -159,7 +155,38 @@ body {
 .card-brain { background: #f5f3ff; }
 .card-breast { background: #fff1f2; }
 
-/* Стилизация кнопок в навигации */
+/*Кнопки*/
+.btn-login {
+    background-color: var(--primary); 
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px; 
+    border: 2px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+    letter-spacing: 0.5px; 
+}
+
+.btn-login:active {
+    transform: translateY(0); 
+    filter: brightness(0.9);
+}
+
+.dark .btn-login {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 .nav-tools {
     display: flex;
     align-items: center;
@@ -189,7 +216,7 @@ body {
     background: #1e293b;
 }
 
-/* Стилизация профиля в навигации */
+/*профиль*/
 .user-profile {
     display: flex;
     align-items: center;
