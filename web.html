@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedAI — Платформа будущего</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container"> <div class="logo" onclick="showSection('home')">MedAI</div>
+        <div class="nav-tools">
+            <button onclick="toggleTheme()" class="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+            <div id="auth-buttons">
+                <button onclick="openModal('login-modal')" class="btn-login">Войти</button>
+            </div>
+            <div id="user-profile-btn" class="user-profile hidden" onclick="showSection('cabinet')">
+                <span class="user-name">Хасен Султан</span>
+                <div class="user-avatar">ХС</div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="container hero-section fade-in">
+            <div class="hero-text-block">
+                <h1 class="hero-title">Ваше здоровье под защитой <span class="gradient-text">ИИ</span></h1>
+                <p class="opacity-70 text-lg" style="margin-bottom: 2rem;">Автоматизированная детекция патологий по снимкам.</p>
+                <button onclick="showSection('services')" class="btn-main">Начать диагностику</button>
+            </div>
+            <div class="hero-image-block">
+                <img src="doctor.png" class="hero-img" alt="Doctor"> 
+            </div>
+        </section>
+
+        <section id="services" class="container hidden fade-in">
+            <div class="services-container">
+                <h2 class="text-3xl font-bold mb-10">Выберите тип анализа</h2>
+                
+                <input type="file" id="bone-input" class="hidden" accept="image/*" onchange="handleFileSelect(this, 'Рентген')">
+                <input type="file" id="brain-input" class="hidden" accept="image/*" onchange="handleFileSelect(this, 'МРТ')">
+                <input type="file" id="breast-input" class="hidden" accept="image/*" onchange="handleFileSelect(this, 'Маммография')">
+
+                <div class="services-grid">
+                    <button onclick="openFileWindow('bone-input')" class="service-card card-bone">
+                        <span class="text-4xl mb-3">🦴</span>
+                        <span class="font-bold">Переломы</span>
+                    </button>
+                    <button onclick="openFileWindow('brain-input')" class="service-card card-brain">
+                        <span class="text-4xl mb-3">🧠</span>
+                        <span class="font-bold">Активность</span>
+                    </button>
+                    <button onclick="openFileWindow('breast-input')" class="service-card card-breast">
+                        <span class="text-4xl mb-3">🎗️</span>
+                        <span class="font-bold">Опухоли</span>
+                    </button>
+                </div>
+
+                <div id="analysis-container" class="analysis-box hidden">
+                    <div id="loader" class="flex flex-col items-center">
+                        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-600 mb-4"></div>
+                        <p class="text-indigo-600 font-bold">ИИ обрабатывает снимок...</p>
+                    </div>
+                    <div id="file-info" class="text-sm opacity-60 mb-4"></div>
+                    <div id="result-text" class="hidden font-bold text-lg"></div>
+                    <div id="segmentation-result" class="hidden flex flex-col items-center">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cabinet" class="hidden fade-in">
+            <div class="cabinet-container">
+                <div class="history-card">
+                    <h2 class="text-2xl font-bold mb-6">История обследований</h2>
+                    <div id="history-list" style="min-height: 100px;">
+                        <p style="color: #94a3b8; font-style: italic; text-align: center;">Результаты анализов появятся здесь автоматически...</p>
+                    </div>
+                </div>
+                
+                <div class="profile-card">
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">ХС</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: bold; margin: 0;">Хасен Султан</h3>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 0;">ID: 2025-AI-01 | Статус: VIP Пациент</p>
+                        </div>
+                    </div>
+                    <button onclick="logout()" class="btn-logout">Выйти из системы</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="login-modal" class="modal-backdrop hidden">
+        <div class="modal-box">
+            <h2 class="text-2xl font-bold mb-6">Авторизация</h2>
+            <form onsubmit="event.preventDefault(); login()" class="space-y-4">
+                <input type="email" placeholder="E-mail" class="input-field" required>
+                <input type="password" placeholder="Пароль" class="input-field" required>
+                <button type="submit" class="btn-main w-full">Войти</button>
+            </form>
+            <button onclick="closeModal('login-modal')" class="mt-6 text-sm opacity-50 block mx-auto">Отмена</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
